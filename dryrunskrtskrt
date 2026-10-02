@@ -1,0 +1,35 @@
+<form id="portalForm">
+  <h3>Choose your destination portal:</h3>
+  
+  <label>
+    <input type="radio" name="portal" data-url="https://google.com" checked> Google
+  </label><br>
+  
+  <label>
+    <input type="radio" name="portal" data-url="https://wikipedia.org"> Wikipedia
+  </label><br>
+  
+  <label>
+    <input type="radio" name="portal" data-url="https://github.com"> GitHub
+  </label><br><br>
+
+  <button type="submit">Go to Portal</button>
+</form>
+
+<script>
+  document.getElementById('portalForm').addEventListener('submit', function(event) {
+    // 1. Prevent the default page refresh behavior
+    event.preventDefault(); 
+    
+    // 2. Find the checked radio button within the "portal" group
+    const selectedRadio = document.querySelector('input[name="portal"]:checked');
+    
+    if (selectedRadio) {
+      // 3. Extract the URL from the data attribute
+      const targetUrl = selectedRadio.getAttribute('data-url');
+      
+      // 4. Redirect the browser window to the new site
+      window.location.href = targetUrl;
+    }
+  });
+</script>
